@@ -27,6 +27,8 @@ public class XSLTransformer {
         // set up XSLT
         TransformerFactory tf = TransformerFactory.newInstance();
         Transformer t = tf.newTransformer(new StreamSource(xslFile));
+        LocalResolver localResolver = new LocalResolver();
+        t.setURIResolver(localResolver);
 
         t.transform(new StreamSource(inputFile), new StreamResult(outputFile));
     }
